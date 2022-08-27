@@ -1,22 +1,9 @@
 import { useMemo } from 'react';
-import { Data, useLanyardWs } from 'use-lanyard';
-
-export function DiscordStatus(data: Data | undefined) {
-  if (!data) return 'fill-gray-600';
-
-  switch (data.discord_status) {
-    case 'online':
-      return 'fill-green-600';
-    case 'idle':
-      return 'fill-yellow-600';
-    case 'dnd':
-      return 'fill-red-500';
-    case 'offline':
-      return 'fill-gray-600';
-  }
-
-  return 'fill-gray-600';
-}
+import { useLanyardWs } from 'use-lanyard';
+import { LanyardUser } from '../../types/lanyard';
+import GameActivity from './activity/Game';
+import SpotifyActivity from './activity/Spotify';
+import Avatar from './Avatar';
 
 export default function Profile() {
   const data = useLanyardWs('847865068657836033');
@@ -32,47 +19,7 @@ export default function Profile() {
           <div className="w-full h-[120px] bg-center bg-[url('https://cdn.discordapp.com/banners/847865068657836033/a_876174be669e4ecc51e16f7700f5daed.gif?size=300')]" />
 
           <div className="absolute top-[76px] left-[16px]">
-            <div className="rounded-full">
-              <div role="img" aria-label="avatar" aria-hidden="false" className="w-[92px] h-[92px] border-[6px] relative rounded-full border-slate-50 dark:border-zinc-900">
-                <svg width="92" height="80" viewBox="0 0 92 80" className="absolute">
-                  <defs>
-                    <mask id="avatar-mask">
-                      <circle cx="40" cy="40" r="40" fill="white" />
-                      <circle cx="68" cy="68" r="14" fill="black" />
-                    </mask>
-                  </defs>
-
-                  <foreignObject x="0" y="0" width="80" height="80" mask="url(#avatar-mask)">
-                    <div className="grid w-full h-full">
-                      <picture>
-                        <source
-                          srcSet="https://cdn.discordapp.com/avatars/847865068657836033/0e4af8bb37264cb531b3be782fe58ede.webp?size=128,
-													https://cdn.discordapp.com/avatars/847865068657836033/0e4af8bb37264cb531b3be782fe58ede.webp?size=256 x2,
-													https://cdn.discordapp.com/avatars/847865068657836033/0e4af8bb37264cb531b3be782fe58ede.webp?size=512 x4"
-                          type="image/webp"
-                        />
-                        <source
-                          srcSet="https://cdn.discordapp.com/avatars/847865068657836033/0e4af8bb37264cb531b3be782fe58ede.webp?size=128,
-													https://cdn.discordapp.com/avatars/847865068657836033/0e4af8bb37264cb531b3be782fe58ede.webp?size=256 x2,
-													https://cdn.discordapp.com/avatars/847865068657836033/0e4af8bb37264cb531b3be782fe58ede.webp?size=512 x4"
-                          type="image/png"
-                        />
-                        <img
-                          src={`https://cdn.discordapp.com/avatars/847865068657836033/0e4af8bb37264cb531b3be782fe58ede.webp?size=80`}
-                          alt="avatar"
-                          width="80"
-                          height="80"
-                          aria-hidden="true"
-                          draggable="false"
-                          className="block"
-                        />
-                      </picture>
-                    </div>
-                  </foreignObject>
-                  <circle cx="68" cy="68" r="8" className={DiscordStatus(data)} />
-                </svg>
-              </div>
-            </div>
+            <div className="rounded-full">{Avatar(data as unknown as LanyardUser)}</div>
           </div>
 
           <div className="pt-16 pb-3 px-4">
@@ -105,10 +52,12 @@ export default function Profile() {
                   <a className="text-blue-500 hover:text-blue-400 transition-all duration-300 delay-100" href="https://bot.denkylabs.com">
                     Denky Bot
                   </a>
-                  {' Main Maintainer '}
+                  {' Main Maintainer\n '}
                 </span>
               </div>
             </div>
+            {data?.activities.find(x => x.type === 0) && GameActivity(data as unknown as LanyardUser)}
+            {data?.listening_to_spotify && SpotifyActivity(data as unknown as LanyardUser)}
           </div>
         </div>
       </div>
