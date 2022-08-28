@@ -3,7 +3,7 @@ import Profile from '../components/discord/Profile';
 
 export default function IndexRoute() {
   return (
-    <main className="w-full max-w-full max-h-full justify-center overflow-y-auto">
+    <main className="w-full max-w-full h-full justify-center items-center mx-auto">
       <Head>
         <meta charSet="UTF-8" />
         <link rel="canonical" href="https://niskii.dev" />
@@ -11,7 +11,7 @@ export default function IndexRoute() {
         <title>Nicolas Ribeiro</title>
       </Head>
 
-      <div className="container mx-auto flex px-5 xl:py-48 py-40 md:flex-row flex-col items-center justify-center">
+      <div className="container mx-auto py-[100px] flex items-center justify-center">
         <Profile />
       </div>
     </main>

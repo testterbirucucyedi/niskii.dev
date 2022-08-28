@@ -1,4 +1,4 @@
-import { LanyardUser } from '../../../types/lanyard';
+import { Data } from 'use-lanyard';
 
 export function Elapsed(num: number) {
   if (!num) return null;
@@ -15,7 +15,7 @@ export function Elapsed(num: number) {
   return `${hours}:${minutes}:${seconds}`;
 }
 
-export default function GameActivity(data: LanyardUser) {
+export default function GameActivity(data: Data | undefined) {
   if (!data) return null;
 
   const activity = data.activities.find(x => x.type === 0);

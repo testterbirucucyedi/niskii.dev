@@ -1,7 +1,8 @@
-import { LanyardUser } from '../../types/lanyard';
+import { Data } from 'use-lanyard';
+
 import { DiscordStatus } from './Status';
 
-export default function Avatar(data: LanyardUser) {
+export default function Avatar(data: Data) {
   return (
     <div role="img" aria-label="avatar" aria-hidden="false" className="w-[92px] h-[92px] border-[6px] relative rounded-full border-slate-50 dark:border-zinc-900">
       <svg width="92" height="80" viewBox="0 0 92 80" className="absolute">

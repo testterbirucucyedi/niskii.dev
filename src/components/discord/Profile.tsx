@@ -1,6 +1,5 @@
 import { useMemo } from 'react';
-import { useLanyardWs } from 'use-lanyard';
-import { LanyardUser } from '../../types/lanyard';
+import { Data, useLanyardWs } from 'use-lanyard';
 import GameActivity from './activity/Game';
 import SpotifyActivity from './activity/Spotify';
 import Avatar from './Avatar';
@@ -19,7 +18,7 @@ export default function Profile() {
           <div className="w-full h-[120px] bg-center bg-[url('https://cdn.discordapp.com/banners/847865068657836033/a_876174be669e4ecc51e16f7700f5daed.gif?size=300')]" />
 
           <div className="absolute top-[76px] left-[16px]">
-            <div className="rounded-full">{Avatar(data as unknown as LanyardUser)}</div>
+            <div className="rounded-full">{Avatar(data as Data)}</div>
           </div>
 
           <div className="pt-16 pb-3 px-4">
@@ -42,22 +41,33 @@ export default function Profile() {
               <h2 className="font-bold text-xs text-zinc-800 dark:text-slate-300 leading-4 mb-2 uppercase">About Me</h2>
               <div className="whitespace-pre-line">
                 <span className="inline-block">
-                  <img src="/flag_br.svg" alt="flag_br" className="w-5 h-5 inline-block align-bottom" draggable="false" />
-                </span>
-                {' He/Him · Developer\n '}
-                <span className="inline-block">
-                  <img src="/heart.svg" alt="heart" className="w-5 h-5 inline-block align-bottom" draggable="false" />
-                </span>{' '}
-                <span className="inline-block">
-                  <a className="text-blue-500 hover:text-blue-400 transition-all duration-300 delay-100" href="https://bot.denkylabs.com">
-                    Denky Bot
+                  <img src="/flag-br.svg" alt="flag-br" className="w-5 h-5 inline-block align-bottom" draggable="false" />
+                  {' He/Him · '}
+                  <a href="https://www.16personalities.com/istp-personality" className="hover:text-blue-500 transition-all duration-300 delay-100">
+                    {' ISTP-T · '}
                   </a>
-                  {' Main Maintainer\n '}
+                  {' Developer \n\n'}
+                </span>
+
+                <span className="inline-block">
+                  <img src="/small-blue-diamond.svg" alt="small-blue-diamond" className="w-5 h-5 inline-block align-bottom" draggable="false" />
+                  <a href="https://github.com/denkylabs" className="text-blue-500 hover:text-blue-400 transition-all duration-300 delay-100">
+                    {' Denky Labs '}
+                  </a>
+                  {' Co-Founder\n '}
+                </span>
+
+                <span className="inline-block">
+                  <img src="/small-blue-diamond.svg" alt="small-blue-diamond" className="w-5 h-5 inline-block align-bottom" draggable="false" />
+                  <a href="https://bot.denkylabs.com" className="text-blue-500 hover:text-blue-400 transition-all duration-300 delay-100">
+                    {' Denky Bot '}
+                  </a>
+                  {' Core Maintainer '}
                 </span>
               </div>
             </div>
-            {data?.activities.find(x => x.type === 0) && GameActivity(data as unknown as LanyardUser)}
-            {data?.listening_to_spotify && SpotifyActivity(data as unknown as LanyardUser)}
+            {data?.activities.find(x => x.type === 0) && GameActivity(data)}
+            {data?.listening_to_spotify && SpotifyActivity(data)}
           </div>
         </div>
       </div>

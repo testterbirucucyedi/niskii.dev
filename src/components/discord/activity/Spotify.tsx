@@ -1,4 +1,4 @@
-import { LanyardUser } from '../../../types/lanyard';
+import { Data } from 'use-lanyard';
 
 export function Elapsed(num: number) {
   if (!num) return null;
@@ -11,7 +11,7 @@ export function Elapsed(num: number) {
   return `${minutes}:${seconds}`;
 }
 
-export default function SpotifyActivity(data: LanyardUser) {
+export default function SpotifyActivity(data: Data) {
   if (!data) return null;
 
   return (
@@ -20,19 +20,19 @@ export default function SpotifyActivity(data: LanyardUser) {
 
       <div className="items-center flex">
         <div className="relative self-start">
-          <img src={data.spotify.album_art_url} alt={data.spotify.album} width="60" height="60" className="block object-cover rounded-lg" />
+          <img src={data.spotify?.album_art_url} alt={data.spotify?.album} width="60" height="60" className="block object-cover rounded-lg" />
         </div>
 
         <div className="flex-auto overflow-hidden ml-2.5">
-          <div className="font-semibold block whitespace-nowrap text-ellipsis overflow-hidden text-sm">{data.spotify.song}</div>
-          <div v-if={data.spotify.artist.replaceAll('; ', ', ')} className="block whitespace-nowrap text-ellipsis overflow-hidden">
-            by {data.spotify.artist.replaceAll('; ', ', ')}
+          <div className="font-semibold block whitespace-nowrap text-ellipsis overflow-hidden text-sm">{data.spotify?.song}</div>
+          <div v-if={data.spotify?.artist.replaceAll('; ', ', ')} className="block whitespace-nowrap text-ellipsis overflow-hidden">
+            by {data.spotify?.artist.replaceAll('; ', ', ')}
           </div>
-          <div v-if={data.spotify.album} className="block whitespace-nowrap text-ellipsis overflow-hidden">
-            on {data.spotify.album}
+          <div v-if={data.spotify?.album} className="block whitespace-nowrap text-ellipsis overflow-hidden">
+            on {data.spotify?.album}
           </div>
           <div v-if="elapsed" className="block whitespace-nowrap text-ellipsis overflow-hidden">
-            {Elapsed(data.spotify.timestamps.start)} elapsed
+            {Elapsed(data.spotify?.timestamps.start as number)} elapsed
           </div>
         </div>
       </div>

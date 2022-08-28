@@ -1,6 +1,6 @@
-import { LanyardUser } from '../../types/lanyard';
+import { Data } from 'use-lanyard';
 
-export function DiscordStatus(data: LanyardUser) {
+export function DiscordStatus(data: Data | undefined) {
   if (!data) return 'fill-gray-600';
 
   switch (data.discord_status) {
