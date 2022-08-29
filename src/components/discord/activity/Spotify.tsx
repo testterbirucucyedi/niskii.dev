@@ -24,7 +24,12 @@ export default function SpotifyActivity(data: Data) {
         </div>
 
         <div className="flex-auto overflow-hidden ml-2.5">
-          <div className="font-semibold block whitespace-nowrap text-ellipsis overflow-hidden text-sm">{data.spotify?.song}</div>
+          <a
+            href={`https://open.spotify.com/track/${data.spotify?.track_id}`}
+            className="font-semibold block whitespace-nowrap text-ellipsis overflow-hidden text-sm hover:underline underline-offset-2"
+          >
+            {data.spotify?.song}
+          </a>
           <div v-if={data.spotify?.artist.replaceAll('; ', ', ')} className="block whitespace-nowrap text-ellipsis overflow-hidden">
             by {data.spotify?.artist.replaceAll('; ', ', ')}
           </div>

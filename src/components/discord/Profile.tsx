@@ -31,7 +31,7 @@ export default function Profile() {
           <div className="px-4 pb-3.5 flex-initial text-sm">
             <div className="pb-2.5">
               <img className="w-5 h-5 -my-px mr-1 float-left" draggable="false" src={`https://cdn.discordapp.com/emojis/1011667200106573976.gif`} alt="aRoseHearts" height={20} width={20} />
-              <a className="text-blue-500 hover:text-blue-400 transition-all duration-300 delay-100" href="https://youtu.be/gQlMMD8auMs">
+              <a className="text-blue-500 hover:underline underline-offset-2" href="https://youtu.be/gQlMMD8auMs">
                 https://youtu.be/gQlMMD8auMs
               </a>
             </div>
@@ -43,7 +43,7 @@ export default function Profile() {
                 <span className="inline-block">
                   <img src="/flag-br.svg" alt="flag-br" className="w-5 h-5 inline-block align-bottom" draggable="false" />
                   {' He/Him · '}
-                  <a href="https://www.16personalities.com/istp-personality" className="hover:text-blue-500 transition-all duration-300 delay-100">
+                  <a href="https://www.16personalities.com/istp-personality" className="hover:underline underline-offset-2">
                     {' ISTP-T · '}
                   </a>
                   {' Developer \n\n'}
@@ -51,7 +51,7 @@ export default function Profile() {
 
                 <span className="inline-block">
                   <img src="/small-blue-diamond.svg" alt="small-blue-diamond" className="w-5 h-5 inline-block align-bottom" draggable="false" />
-                  <a href="https://github.com/denkylabs" className="text-blue-500 hover:text-blue-400 transition-all duration-300 delay-100">
+                  <a href="https://github.com/denkylabs" className="text-blue-500 hover:underline underline-offset-2">
                     {' Denky Labs '}
                   </a>
                   {' Co-Founder\n '}
@@ -59,7 +59,7 @@ export default function Profile() {
 
                 <span className="inline-block">
                   <img src="/small-blue-diamond.svg" alt="small-blue-diamond" className="w-5 h-5 inline-block align-bottom" draggable="false" />
-                  <a href="https://bot.denkylabs.com" className="text-blue-500 hover:text-blue-400 transition-all duration-300 delay-100">
+                  <a href="https://bot.denkylabs.com" className="text-blue-500  hover:underline underline-offset-2">
                     {' Denky Bot '}
                   </a>
                   {' Core Maintainer '}
