@@ -45,14 +45,14 @@ export default function GameActivity(data: Data | undefined) {
         </div>
 
         <div className="flex-auto overflow-hidden ml-2.5">
-          <div className="font-semibold block whitespace-nowrap text-ellipsis overflow-hidden text-sm">{activity?.name}</div>
-          <div v-if={activity?.details} className="block whitespace-nowrap text-ellipsis overflow-hidden">
+          <div className="font-semibold block whitespace-nowrap text-ellipsis overflow-hidden text-sm text-zinc-800 dark:text-slate-300">{activity?.name}</div>
+          <div v-if={activity?.details} className="block whitespace-nowrap text-ellipsis overflow-hidden text-zinc-800 dark:text-slate-300">
             {activity?.details}
           </div>
-          <div v-if={activity?.state} className="block whitespace-nowrap text-ellipsis overflow-hidden">
+          <div v-if={activity?.state} className="text-zinc-800 dark:text-slate-300 block whitespace-nowrap text-ellipsis overflow-hidden">
             {activity?.state}
           </div>
-          <div v-if="elapsed" className="block whitespace-nowrap text-ellipsis overflow-hidden">
+          <div v-if="elapsed" className="block whitespace-nowrap text-ellipsis overflow-hidden text-zinc-800 dark:text-slate-300">
             {Elapsed(activity.timestamps?.start as number)} elapsed
           </div>
         </div>

@@ -26,17 +26,17 @@ export default function SpotifyActivity(data: Data) {
         <div className="flex-auto overflow-hidden ml-2.5">
           <a
             href={`https://open.spotify.com/track/${data.spotify?.track_id}`}
-            className="font-semibold block whitespace-nowrap text-ellipsis overflow-hidden text-sm hover:underline underline-offset-2"
+            className="font-semibold block whitespace-nowrap text-ellipsis overflow-hidden text-sm hover:underline underline-offset-2 text-zinc-800 dark:text-slate-300"
           >
             {data.spotify?.song}
           </a>
-          <div v-if={data.spotify?.artist.replaceAll('; ', ', ')} className="block whitespace-nowrap text-ellipsis overflow-hidden">
+          <div v-if={data.spotify?.artist.replaceAll('; ', ', ')} className="block whitespace-nowrap text-ellipsis overflow-hidden text-zinc-800 dark:text-slate-300">
             by {data.spotify?.artist.replaceAll('; ', ', ')}
           </div>
-          <div v-if={data.spotify?.album} className="block whitespace-nowrap text-ellipsis overflow-hidden">
+          <div v-if={data.spotify?.album} className="block whitespace-nowrap text-ellipsis overflow-hidden text-zinc-800 dark:text-slate-300">
             on {data.spotify?.album}
           </div>
-          <div v-if="elapsed" className="block whitespace-nowrap text-ellipsis overflow-hidden">
+          <div v-if="elapsed" className="block whitespace-nowrap text-ellipsis overflow-hidden text-zinc-800 dark:text-slate-300">
             {Elapsed(data.spotify?.timestamps.start as number)} elapsed
           </div>
         </div>
