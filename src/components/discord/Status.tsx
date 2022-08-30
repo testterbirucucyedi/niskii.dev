@@ -1,7 +1,7 @@
 import { Data } from 'use-lanyard';
 
-export function DiscordStatus(data: Data | undefined) {
-  if (!data) return 'fill-gray-600';
+export function Status(data: Data | undefined) {
+  if (!data) return 'fill-slate-500';
 
   switch (data.discord_status) {
     case 'online':

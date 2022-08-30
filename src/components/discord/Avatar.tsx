@@ -1,6 +1,6 @@
 import { Data } from 'use-lanyard';
 
-import { DiscordStatus } from './Status';
+import { Status } from './Status';
 
 export default function Avatar(data: Data) {
   return (
@@ -40,7 +40,7 @@ export default function Avatar(data: Data) {
             </picture>
           </div>
         </foreignObject>
-        <circle cx="68" cy="68" r="8" className={DiscordStatus(data)} />
+        <circle cx="68" cy="68" r="8" className={Status(data)} />
       </svg>
     </div>
   );

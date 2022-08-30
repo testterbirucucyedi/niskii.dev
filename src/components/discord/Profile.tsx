@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { Data, useLanyardWs } from 'use-lanyard';
+import About from './About';
 import GameActivity from './activity/Game';
 import SpotifyActivity from './activity/Spotify';
 import Avatar from './Avatar';
@@ -37,35 +38,7 @@ export default function Profile() {
             </div>
 
             <div className="w-full h-[1px] bg-slate-200 dark:bg-zinc-800 mb-3" />
-            <div className="mb-3">
-              <h2 className="font-bold text-xs text-zinc-800 dark:text-slate-300 leading-4 mb-2 uppercase">About Me</h2>
-              <div className="whitespace-pre-line">
-                <span className="inline-block">
-                  <img src="/flag-br.svg" alt="flag-br" className="w-5 h-5 inline-block align-bottom" draggable="false" />
-                  {' He/Him · '}
-                  <a href="https://www.16personalities.com/istp-personality" className="hover:underline underline-offset-2">
-                    {' ISTP-T · '}
-                  </a>
-                  {' Developer \n\n'}
-                </span>
-
-                <span className="inline-block">
-                  <img src="/small-blue-diamond.svg" alt="small-blue-diamond" className="w-5 h-5 inline-block align-bottom" draggable="false" />
-                  <a href="https://github.com/denkylabs" className="text-blue-500 hover:underline underline-offset-2">
-                    {' Denky Labs '}
-                  </a>
-                  {' Co-Founder\n '}
-                </span>
-
-                <span className="inline-block">
-                  <img src="/small-blue-diamond.svg" alt="small-blue-diamond" className="w-5 h-5 inline-block align-bottom" draggable="false" />
-                  <a href="https://bot.denkylabs.com" className="text-blue-500  hover:underline underline-offset-2">
-                    {' Denky Bot '}
-                  </a>
-                  {' Core Maintainer '}
-                </span>
-              </div>
-            </div>
+            <About />
             {data?.activities.find(x => x.type === 0) && GameActivity(data)}
             {data?.listening_to_spotify && SpotifyActivity(data)}
           </div>
