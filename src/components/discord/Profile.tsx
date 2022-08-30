@@ -25,7 +25,7 @@ export default function Profile() {
           <div className="pt-16 pb-3 px-4">
             <div className="text-xl font-semibold leading-6">
               <span className="text-zinc-900 dark:text-slate-50">Niskii</span>
-              <span className="dark:text-slate-300">#6694</span>
+              <span className="text-zinc-700 dark:text-slate-300">#6694</span>
             </div>
           </div>
 
