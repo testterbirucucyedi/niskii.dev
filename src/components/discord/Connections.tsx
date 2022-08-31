@@ -18,7 +18,7 @@ export default function Connections() {
           </a>
         </div>
 
-        <div className="h-10 mb-2 text-sm w-auto relative flex items-center px-4 justify-between text-white bg-zinc-500 dark:bg-zinc-700 rounded transition-colors">
+        <div className="h-10 mb-2 text-sm w-auto relative flex items-center px-4 justify-between text-white bg-zinc-500 dark:bg-zinc-700 rounded">
           <div className="flex-row flex text-center items-center whitespace-nowrap text-ellipsis overflow-hidden space-x-1">
             <SpotifyIcon />
             <span className="text-md font-semibold text-zinc-900 dark:text-white">yo, niskii</span>
@@ -28,7 +28,7 @@ export default function Connections() {
           </a>
         </div>
 
-        <div className="h-10 text-sm w-auto relative flex items-center px-4 justify-between text-white bg-zinc-500 dark:bg-zinc-700 rounded transition-colors">
+        <div className="h-10 text-sm w-auto relative flex items-center px-4 justify-between text-white bg-zinc-500 dark:bg-zinc-700 rounded">
           <div className="flex-row flex text-center items-center whitespace-nowrap text-ellipsis overflow-hidden space-x-1">
             <TwitterIcon />
             <span className="text-md font-semibold text-zinc-900 dark:text-white">whoisniskii</span>
