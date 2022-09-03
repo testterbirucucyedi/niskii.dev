@@ -17,19 +17,19 @@ export default function Avatar(data: Data) {
           <div className="grid w-full h-full">
             <picture>
               <source
-                srcSet="https://cdn.discordapp.com/avatars/847865068657836033/0e4af8bb37264cb531b3be782fe58ede.webp?size=128,
-            https://cdn.discordapp.com/avatars/847865068657836033/0e4af8bb37264cb531b3be782fe58ede.webp?size=256 x2,
-            https://cdn.discordapp.com/avatars/847865068657836033/0e4af8bb37264cb531b3be782fe58ede.webp?size=512 x4"
+                srcSet="https://cdn.discordapp.com/avatars/847865068657836033/d76531d7ab1235581f3c627e1e8042b3.webp?size=128,
+                https://cdn.discordapp.com/avatars/847865068657836033/d76531d7ab1235581f3c627e1e8042b3.webp?size=256 x2,
+                https://cdn.discordapp.com/avatars/847865068657836033/d76531d7ab1235581f3c627e1e8042b3.webp?size=512 x4"
                 type="image/webp"
               />
               <source
-                srcSet="https://cdn.discordapp.com/avatars/847865068657836033/0e4af8bb37264cb531b3be782fe58ede.webp?size=128,
-            https://cdn.discordapp.com/avatars/847865068657836033/0e4af8bb37264cb531b3be782fe58ede.webp?size=256 x2,
-            https://cdn.discordapp.com/avatars/847865068657836033/0e4af8bb37264cb531b3be782fe58ede.webp?size=512 x4"
+                srcSet="https://cdn.discordapp.com/avatars/847865068657836033/d76531d7ab1235581f3c627e1e8042b3.webp?size=128,
+                https://cdn.discordapp.com/avatars/847865068657836033/d76531d7ab1235581f3c627e1e8042b3.webp?size=256 x2,
+                https://cdn.discordapp.com/avatars/847865068657836033/d76531d7ab1235581f3c627e1e8042b3.webp?size=512 x4"
                 type="image/png"
               />
               <img
-                src={`https://cdn.discordapp.com/avatars/847865068657836033/0e4af8bb37264cb531b3be782fe58ede.webp?size=80`}
+                src={`https://cdn.discordapp.com/avatars/847865068657836033/d76531d7ab1235581f3c627e1e8042b3.webp?size=80`}
                 alt="avatar"
                 width="80"
                 height="80"
