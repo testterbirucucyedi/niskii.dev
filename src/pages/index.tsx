@@ -8,6 +8,7 @@ export default function IndexRoute() {
         <meta charSet="UTF-8" />
         <link rel="canonical" href="https://niskii.dev" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="/favicon.png" />
         <title>Nicolas Ribeiro</title>
       </Head>
 
