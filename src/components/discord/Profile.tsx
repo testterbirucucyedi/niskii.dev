@@ -1,17 +1,19 @@
 import { useMemo } from 'react';
-import { Data, useLanyardWs } from 'use-lanyard';
+import { Data } from 'use-lanyard';
 import About from './About';
 import GameActivity from './activity/Game';
 import SpotifyActivity from './activity/Spotify';
 import Avatar from './Avatar';
 import Connections from './Connections';
 
-export default function Profile() {
-  const data = useLanyardWs('847865068657836033');
+interface CardProps {
+  data: Data;
+}
 
+export default function Profile(props: CardProps) {
   useMemo(() => {
-    return data;
-  }, [data]);
+    return props.data;
+  }, [props.data]);
 
   return (
     <div className="w-[300px] dark:text-slate-200 drop-shadow-xl font-['Whitney']">
@@ -20,7 +22,7 @@ export default function Profile() {
           <div className="w-full h-[120px] bg-center bg-[url('https://cdn.discordapp.com/banners/847865068657836033/a_876174be669e4ecc51e16f7700f5daed.gif?size=300')]" />
 
           <div className="absolute top-[76px] left-[16px]">
-            <div className="rounded-full">{Avatar(data as Data)}</div>
+            <div className="rounded-full">{Avatar(props.data as Data)}</div>
           </div>
 
           <div className="pt-16 pb-3 px-4">
@@ -40,8 +42,8 @@ export default function Profile() {
 
             <div className="w-full h-[1px] bg-slate-200 dark:bg-zinc-800 mb-3" />
             <About />
-            {data?.activities.find(x => x.type === 0) && GameActivity(data)}
-            {data?.listening_to_spotify && SpotifyActivity(data)}
+            {props.data?.activities.find(x => x.type === 0) && GameActivity(props.data)}
+            {props.data?.listening_to_spotify && SpotifyActivity(props.data)}
 
             <Connections />
           </div>

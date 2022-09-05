@@ -1,18 +1,11 @@
 import { Data } from 'use-lanyard';
-
-export function Elapsed(num: number) {
-  if (!num) return null;
-
-  const distance = Date.now() - num;
-
-  const minutes = (Math.floor(distance / 60000) % 60).toString().padStart(2, '0');
-  const seconds = (Math.floor(distance / 1000) % 60).toString().padStart(2, '0');
-
-  return `${minutes}:${seconds}`;
-}
+import { useTime } from '../../../hooks/useTime';
+import Progress from '../../Progress';
 
 export default function SpotifyActivity(data: Data) {
   if (!data) return null;
+
+  const time = useTime(data.spotify!.timestamps);
 
   return (
     <div className="mb-3">
@@ -36,8 +29,15 @@ export default function SpotifyActivity(data: Data) {
           <div v-if={data.spotify?.album} className="block whitespace-nowrap text-ellipsis overflow-hidden text-zinc-800 dark:text-slate-300">
             on {data.spotify?.album}
           </div>
-          <div v-if="elapsed" className="block whitespace-nowrap text-ellipsis overflow-hidden text-zinc-800 dark:text-slate-300">
-            {Elapsed(data.spotify?.timestamps.start as number)} elapsed
+        </div>
+      </div>
+
+      <div className="mt-3">
+        <div>
+          <Progress time={time} />
+          <div className="flex justify-between">
+            {time && time.start && <span className="text-xs text-zinc-800 dark:text-slate-300">{time!.start}</span>}
+            {time && time.end && <span className="text-xs text-zinc-800 dark:text-slate-300">{time!.end}</span>}
           </div>
         </div>
       </div>

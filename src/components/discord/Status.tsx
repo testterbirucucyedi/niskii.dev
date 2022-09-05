@@ -9,7 +9,7 @@ export function Status(data: Data | undefined) {
     case 'idle':
       return 'fill-amber-400';
     case 'dnd':
-      return 'fill-red-700';
+      return 'fill-red-500';
     case 'offline':
       return 'fill-slate-500';
   }
