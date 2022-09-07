@@ -41,7 +41,7 @@ export default function GameActivity(data: Data | undefined) {
             {activity!.state}
           </div>
           <div v-if="elapsed" className="block whitespace-nowrap text-ellipsis overflow-hidden text-zinc-800 dark:text-slate-300">
-            {time!.start} elapsed
+            {time?.start && !time.end ? `${time.start} elapsed` : `${time?.end} left`}
           </div>
         </div>
       </div>
