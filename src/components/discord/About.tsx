@@ -15,10 +15,9 @@ export default function About() {
 
         <span className="inline-block">
           <img src="/small-blue-diamond.svg" alt="small-blue-diamond" className="w-5 h-5 inline-block align-bottom" draggable="false" />{' '}
-          <a href="https://github.com/denkylabs/helly" className="text-zinc-800 dark:text-slate-300 hover:underline underline-offset-2">
-            {'Helly'}
+          <a href="https://github.com/denkylabs/zohy.js" className="text-zinc-800 dark:text-slate-300 hover:underline underline-offset-2">
+            {'Zohy.js'}
           </a>
-          {"'s"}
           <a className="text-zinc-800 dark:text-slate-300">{' Core Maintainer '}</a>
         </span>
 
