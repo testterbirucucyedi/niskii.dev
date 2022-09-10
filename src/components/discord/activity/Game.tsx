@@ -8,6 +8,9 @@ export default function GameActivity(data: Data | undefined) {
 
   // const time = useTime(activity!.timestamps);
 
+  const getAssetUrl = (appId: string, asset: string) =>
+    asset.startsWith('mp:external') ? `https://media.discordapp.net/${asset.replace('mp:', '')}` : `https://cdn.discordapp.com/${appId}/${asset}.png`;
+
   return (
     <div className="mb-3">
       <h2 className="font-bold text-xs text-zinc-800 dark:text-slate-300 leading-4 mb-2 uppercase">Playing a game</h2>
@@ -15,15 +18,14 @@ export default function GameActivity(data: Data | undefined) {
       <div className="items-center flex">
         <div className="relative self-start">
           <img
-            src={`https://cdn.discordapp.com/app-assets/${activity!.application_id}/${activity!.assets?.large_image}.png`}
+            src={activity!.assets?.large_image ? getAssetUrl(activity.application_id!, activity.assets.large_image) : `https://dcdn.dstn.to/app-icons/${activity.application_id}`}
             alt={activity!.assets?.large_text}
             width="60"
             height="60"
             className="block object-cover rounded-lg"
           />
           <img
-            v-if={activity!.assets?.small_text}
-            src={`https://cdn.discordapp.com/app-assets/${activity!.application_id}/${activity!.assets?.small_image}.png`}
+            src={getAssetUrl(activity.application_id!, activity.assets?.small_image as string)}
             alt={activity!.assets?.small_text}
             width="20"
             height="20"
