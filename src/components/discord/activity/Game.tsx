@@ -1,5 +1,4 @@
 import { Data } from 'use-lanyard';
-import { useTime } from '../../../hooks/useTime';
 
 export default function GameActivity(data: Data | undefined) {
   if (!data) return null;
@@ -7,7 +6,7 @@ export default function GameActivity(data: Data | undefined) {
   const activity = data.activities.find(x => x.type === 0);
   if (!activity) return null;
 
-  const time = useTime(activity!.timestamps);
+  // const time = useTime(activity!.timestamps);
 
   return (
     <div className="mb-3">
@@ -40,9 +39,9 @@ export default function GameActivity(data: Data | undefined) {
           <div v-if={activity!.state} className="text-zinc-800 dark:text-slate-300 block whitespace-nowrap text-ellipsis overflow-hidden">
             {activity!.state}
           </div>
-          <div v-if="elapsed" className="block whitespace-nowrap text-ellipsis overflow-hidden text-zinc-800 dark:text-slate-300">
+          {/* <div v-if="elapsed" className="block whitespace-nowrap text-ellipsis overflow-hidden text-zinc-800 dark:text-slate-300">
             {time?.start && !time.end ? `${time.start} elapsed` : `${time?.end} left`}
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

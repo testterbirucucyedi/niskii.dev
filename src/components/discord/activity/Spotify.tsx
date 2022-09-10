@@ -1,11 +1,9 @@
 import { Data } from 'use-lanyard';
-import { useTime } from '../../../hooks/useTime';
-import Progress from '../../Progress';
 
 export default function SpotifyActivity(data: Data) {
   if (!data) return null;
 
-  const time = useTime(data.spotify!.timestamps);
+  // const time = useTime(data.spotify!.timestamps);
 
   return (
     <div className="mb-3">
@@ -32,7 +30,7 @@ export default function SpotifyActivity(data: Data) {
         </div>
       </div>
 
-      <div className="mt-3">
+      {/* <div className="mt-3">
         <div>
           <Progress time={time} />
           <div className="flex justify-between">
@@ -40,7 +38,7 @@ export default function SpotifyActivity(data: Data) {
             {time && time.end && <span className="text-xs text-zinc-800 dark:text-slate-300">{time!.end}</span>}
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
