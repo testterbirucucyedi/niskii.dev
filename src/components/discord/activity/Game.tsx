@@ -24,12 +24,14 @@ export default function GameActivity(data: Data | undefined) {
             height="60"
             className="block object-cover rounded-lg"
           />
-          <img
-            src={`https://cdn.discordapp.com/app-assets/${activity!.application_id}/${activity!.assets?.small_image}.png`}
-            width="20"
-            height="20"
-            className="rounded-full absolute -bottom-1 -right-1"
-          />
+          {activity.assets?.small_image && (
+            <img
+              src={`https://cdn.discordapp.com/app-assets/${activity!.application_id}/${activity!.assets?.small_image}.png`}
+              width="20"
+              height="20"
+              className="rounded-full absolute -bottom-1 -right-1"
+            />
+          )}
         </div>
 
         <div className="flex-auto overflow-hidden ml-2.5">
