@@ -1,5 +1,5 @@
-import { Timestamps } from 'use-lanyard';
 import { useEffect, useState } from 'react';
+import { Timestamps } from 'use-lanyard';
 
 const padding = (n: number) => (n < 10 ? `0${n}` : n);
 
@@ -25,7 +25,7 @@ type Times =
       completion: number;
     };
 
-function getTime(timestamps?: Timestamps): Times | null {
+function getTime(timestamps: Timestamps): Times | null {
   if (!timestamps) return null;
 
   const { start, end } = timestamps;
@@ -44,7 +44,7 @@ function getTime(timestamps?: Timestamps): Times | null {
     if (days > 0) return { start: `${days > 1 ? `${days} days` : `${days} day`}`, end: null, completion: null };
 
     return {
-      start: `${hours ? `0${hours}:` : ''}${padding(minutes)}:${padding(seconds)}`,
+      start: `${hours ? `${hours}:` : ''}${padding(minutes)}:${padding(seconds)}`,
       end: null,
       completion: null,
     };
@@ -73,7 +73,7 @@ function getTime(timestamps?: Timestamps): Times | null {
   };
 }
 
-export function useTime(timestamps?: Timestamps) {
+export function useTime(timestamps: Timestamps) {
   const [time, setTime] = useState<Times | null>(getTime(timestamps));
 
   useEffect(() => {
@@ -83,11 +83,7 @@ export function useTime(timestamps?: Timestamps) {
       setTime(getTime(timestamps));
     }, 200);
 
-    if (interval) {
-      return () => clearInterval(interval);
-    }
-
-    return undefined;
+    return () => clearInterval(interval);
   }, [timestamps]);
 
   return time;

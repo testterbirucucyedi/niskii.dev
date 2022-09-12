@@ -23,9 +23,9 @@ export default function Avatar(data: Data) {
                 type="image/webp"
               />
               <source
-                srcSet="https://cdn.discordapp.com/avatars/847865068657836033/3ce7cf30abd5b6108ba5cb03e60a7fb4.webp?size=128,
-                https://cdn.discordapp.com/avatars/847865068657836033/3ce7cf30abd5b6108ba5cb03e60a7fb4.webp?size=256 x2,
-                https://cdn.discordapp.com/avatars/847865068657836033/3ce7cf30abd5b6108ba5cb03e60a7fb4.webp?size=512 x4"
+                srcSet="https://cdn.discordapp.com/avatars/847865068657836033/3ce7cf30abd5b6108ba5cb03e60a7fb4.png?size=128,
+                https://cdn.discordapp.com/avatars/847865068657836033/3ce7cf30abd5b6108ba5cb03e60a7fb4.png?size=256 x2,
+                https://cdn.discordapp.com/avatars/847865068657836033/3ce7cf30abd5b6108ba5cb03e60a7fb4.png?size=512 x4"
                 type="image/png"
               />
               <img
