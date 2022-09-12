@@ -24,7 +24,7 @@ const nextConfig = {
         permanent: false
       },
       {
-        source: "playlist",
+        source: "/playlist",
         destination: "https://open.spotify.com/playlist/2huBd3Ww3XupgkCRTRCB79",
         permanent: false
       }
