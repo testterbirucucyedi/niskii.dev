@@ -1,16 +1,11 @@
 import { Data } from 'use-lanyard';
 
-export default function GameActivity(data: Data | undefined) {
-  if (!data) return null;
-
-  const activity = data.activities.find(x => x.type === 0);
-  if (!activity) return null;
-
-  // const time = useTime(activity!.timestamps);
+export default function GameActivity(data: Data) {
+  const activity = data.activities.find(x => x.type === 0)!;
 
   return (
     <div className="mb-3">
-      <h2 className="font-bold text-xs text-zinc-800 dark:text-slate-300 leading-4 mb-2 uppercase">Playing a game</h2>
+      <h2 className="font-bold text-xs text-slate-300 leading-4 mb-2 uppercase">Playing a game</h2>
 
       <div className="items-center flex">
         <div className="relative self-start">
@@ -35,15 +30,11 @@ export default function GameActivity(data: Data | undefined) {
         </div>
 
         <div className="flex-auto overflow-hidden ml-2.5">
-          <div className="font-semibold block whitespace-nowrap text-ellipsis overflow-hidden text-sm text-zinc-800 dark:text-slate-300">{activity!.name}</div>
-          <div v-if={activity!.details} className="block whitespace-nowrap text-ellipsis overflow-hidden text-zinc-800 dark:text-slate-300">
-            {activity!.details}
-          </div>
-          <div v-if={activity!.state} className="text-zinc-800 dark:text-slate-300 block whitespace-nowrap text-ellipsis overflow-hidden">
-            {activity!.state}
-          </div>
+          <div className="font-semibold block whitespace-nowrap text-ellipsis overflow-hidden text-sm text-slate-300">{activity!.name}</div>
+          <div className="block whitespace-nowrap text-ellipsis overflow-hidden text-slate-300">{activity!.details}</div>
+          <div className="text-slate-300 block whitespace-nowrap text-ellipsis overflow-hidden">{activity!.state}</div>
           {/* {activity.timestamps && (
-            <div v-if="elapsed" className="block whitespace-nowrap text-ellipsis overflow-hidden text-zinc-800 dark:text-slate-300">
+            <div className="block whitespace-nowrap text-ellipsis overflow-hidden text-slate-300">
               {time?.start && !time.end ? `${time.start} elapsed` : `${time?.end} left`}
             </div>
           )} */}

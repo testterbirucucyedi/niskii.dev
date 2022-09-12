@@ -1,6 +1,6 @@
 import { Data } from 'use-lanyard';
 
-export function Status(data: Data | undefined) {
+export function Status(data: Data) {
   if (!data) return 'fill-slate-500';
 
   switch (data.discord_status) {
