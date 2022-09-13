@@ -1,10 +1,26 @@
 import Head from 'next/head';
-import { useLanyardWs } from 'use-lanyard';
+import { useEffect, useState } from 'react';
 import Profile from '../components/discord/Profile';
 import Loading from '../components/Loading';
+import { LanyardPresence } from '../types/lanyard';
+import { lanyard } from '../utils/lanyard';
 
 export default function IndexRoute() {
-  const data = useLanyardWs('847865068657836033');
+  const [status, setStatus] = useState<LanyardPresence>();
+
+  function presenceChange(data: LanyardPresence) {
+    setStatus(data || null);
+  }
+
+  useEffect(() => {
+    // @ts-ignore - Fiquei com preguiça de arrumar isso
+    lanyard.on('presence', presenceChange);
+
+    return () => {
+      // @ts-ignore - Fiquei com preguiça de arrumar isso tbm
+      lanyard.removeListener('presence', presenceChange);
+    };
+  }, []);
 
   return (
     <main className="flex mx-auto items-center justify-center h-screen w-screen">
@@ -15,10 +31,10 @@ export default function IndexRoute() {
         <link rel="shortcut icon" href="/favicon.png" />
         <title>Nicolas Ribeiro</title>
         <meta name="description" content="My personal website." />
-        <meta content="https://cdn.discordapp.com/avatars/847865068657836033/3ce7cf30abd5b6108ba5cb03e60a7fb4.png?size=512" property="og:image" />
+        <meta content="https://cdn.discordapp.com/avatars/847865068657836033/47978c9be525f305379d17dcff2d86a2.png?size=512" property="og:image" />
       </Head>
 
-      {data ? <Profile data={data} /> : <Loading />}
+      {status ? <Profile data={status} /> : <Loading />}
     </main>
   );
 }

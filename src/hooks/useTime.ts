@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Timestamps } from 'use-lanyard';
+import { Timestamps } from '../types/lanyard';
 
 const padding = (n: number) => (n < 10 ? `0${n}` : n);
 

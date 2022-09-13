@@ -1,8 +1,23 @@
-import { Data } from 'use-lanyard';
+import { LanyardPresence } from '../../types/lanyard';
 
-import { Status } from './Status';
+function status(status: string) {
+  if (!status) return 'fill-slate-500';
 
-export default function Avatar(data: Data) {
+  switch (status) {
+    case 'online':
+      return 'fill-green-600';
+    case 'idle':
+      return 'fill-amber-400';
+    case 'dnd':
+      return 'fill-red-500';
+    case 'offline':
+      return 'fill-slate-500';
+  }
+
+  return 'fill-slate-500';
+}
+
+export default function Avatar(data: LanyardPresence) {
   return (
     <div role="img" aria-label="avatar" aria-hidden="false" className="w-[92px] h-[92px] border-[6px] relative rounded-full border-zinc-900">
       <svg width="92" height="80" viewBox="0 0 92 80" className="absolute">
@@ -17,19 +32,19 @@ export default function Avatar(data: Data) {
           <div className="grid w-full h-full">
             <picture>
               <source
-                srcSet="https://cdn.discordapp.com/avatars/847865068657836033/3ce7cf30abd5b6108ba5cb03e60a7fb4.webp?size=128,
-                https://cdn.discordapp.com/avatars/847865068657836033/3ce7cf30abd5b6108ba5cb03e60a7fb4.webp?size=256 x2,
-                https://cdn.discordapp.com/avatars/847865068657836033/3ce7cf30abd5b6108ba5cb03e60a7fb4.webp?size=512 x4"
+                srcSet="https://cdn.discordapp.com/avatars/847865068657836033/47978c9be525f305379d17dcff2d86a2.webp?size=128,
+                https://cdn.discordapp.com/avatars/847865068657836033/47978c9be525f305379d17dcff2d86a2.webp?size=256 x2,
+                https://cdn.discordapp.com/avatars/847865068657836033/47978c9be525f305379d17dcff2d86a2.webp?size=512 x4"
                 type="image/webp"
               />
               <source
-                srcSet="https://cdn.discordapp.com/avatars/847865068657836033/3ce7cf30abd5b6108ba5cb03e60a7fb4.png?size=128,
-                https://cdn.discordapp.com/avatars/847865068657836033/3ce7cf30abd5b6108ba5cb03e60a7fb4.png?size=256 x2,
-                https://cdn.discordapp.com/avatars/847865068657836033/3ce7cf30abd5b6108ba5cb03e60a7fb4.png?size=512 x4"
+                srcSet="https://cdn.discordapp.com/avatars/847865068657836033/47978c9be525f305379d17dcff2d86a2.png?size=128,
+                https://cdn.discordapp.com/avatars/847865068657836033/47978c9be525f305379d17dcff2d86a2.png?size=256 x2,
+                https://cdn.discordapp.com/avatars/847865068657836033/47978c9be525f305379d17dcff2d86a2.png?size=512 x4"
                 type="image/png"
               />
               <img
-                src={`https://cdn.discordapp.com/avatars/847865068657836033/3ce7cf30abd5b6108ba5cb03e60a7fb4.webp?size=80`}
+                src={`https://cdn.discordapp.com/avatars/847865068657836033/47978c9be525f305379d17dcff2d86a2.webp?size=80`}
                 alt="avatar"
                 width="80"
                 height="80"
@@ -40,7 +55,7 @@ export default function Avatar(data: Data) {
             </picture>
           </div>
         </foreignObject>
-        <circle cx="68" cy="68" r="8" className={Status(data)} />
+        <circle cx="68" cy="68" r="8" className={status(data.discord_status)} />
       </svg>
     </div>
   );

@@ -44,6 +44,7 @@
     "default-param-last": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
     "import/prefer-default-export": "off",
+    "no-shadow": "off",
     "import/extensions": "off",
     "import/no-unresolved": "off",
     "lines-between-class-members": [

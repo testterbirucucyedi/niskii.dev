@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/whoisniskii/niskii.dev.git"
   },
-  "license": "GPL-3.0",
+  "license": "MIT",
   "author": "Nicolas Ribeiro <niskii@denkylabs.com>",
   "scripts": {
     "dev": "next dev",
@@ -20,8 +20,7 @@
   "dependencies": {
     "next": "12.2.4",
     "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "use-lanyard": "^1.1.0"
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@types/node": "18.7.16",
