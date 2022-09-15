@@ -1,7 +1,6 @@
 import AnchorIcon from './icons/AnchorIcon';
 import GitHubIcon from './icons/GitHubIcon';
 import SpotifyIcon from './icons/SpotifyIcon';
-import TwitterIcon from './icons/TwitterIcon';
 import VerifiedIcon from './icons/VerifiedIcon';
 
 export default function Connections() {
@@ -34,20 +33,6 @@ export default function Connections() {
             </div>
           </div>
           <a href="/spotify">
-            <AnchorIcon />
-          </a>
-        </div>
-
-        {/* Twitter */}
-        <div className="h-10 text-md w-auto relative flex items-center px-4 justify-between text-white bg-zinc-700 rounded">
-          <div className="flex-row flex text-center items-center whitespace-nowrap text-ellipsis overflow-hidden space-x-1">
-            <TwitterIcon />
-            <span className="text-md font-semibold text-white">whoisniskii</span>
-            <div className="w-[16px] h-[16px]">
-              <VerifiedIcon />
-            </div>
-          </div>
-          <a href="/twitter">
             <AnchorIcon />
           </a>
         </div>

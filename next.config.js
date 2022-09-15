@@ -19,11 +19,6 @@ const nextConfig = {
         permanent: false
       },
       {
-        source: "/twitter",
-        destination: "https://twitter.com/whoisniskii",
-        permanent: false
-      },
-      {
         source: "/playlist",
         destination: "https://open.spotify.com/playlist/2huBd3Ww3XupgkCRTRCB79",
         permanent: false

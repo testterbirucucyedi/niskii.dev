@@ -13,11 +13,9 @@ export default function IndexRoute() {
   }
 
   useEffect(() => {
-    // @ts-ignore - Fiquei com preguiça de arrumar isso
     lanyard.on('presence', presenceChange);
 
     return () => {
-      // @ts-ignore - Fiquei com preguiça de arrumar isso tbm
       lanyard.removeListener('presence', presenceChange);
     };
   }, []);
