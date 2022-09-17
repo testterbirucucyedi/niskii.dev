@@ -29,7 +29,7 @@ export default function Profile(props: CardProps) {
           <div className="pt-14 pb-3 px-4">
             <div className="text-xl font-semibold leading-6">
               <span className="text-slate-50">Niskii</span>
-              <span className="text-slate-300">#6694</span>
+              <span className="text-slate-300">#0001</span>
             </div>
           </div>
 

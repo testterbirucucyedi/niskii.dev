@@ -34,8 +34,8 @@ export default function SpotifyActivity(spotify: LanyardSpotify) {
           <div>
             <Progress time={time} />
             <div className="flex flex-row items-center gap-3 justify-between">
-              {time && time.start && <span className="text-xs text-slate-300">{time.start}</span>}
-              {time && time.end && <span className="text-xs text-slate-300">{time.end}</span>}
+              {time && time.start && <span className="text-xs">{time.start}</span>}
+              {time && time.end && <span className="text-xs">{time.end}</span>}
             </div>
           </div>
         )}
