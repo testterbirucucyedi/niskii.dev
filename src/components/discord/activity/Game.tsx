@@ -8,17 +8,19 @@ export default function GameActivity(activity: LanyardActivity) {
       {/* Image */}
       <div className="items-center flex">
         <div className="relative self-start">
-          <img
-            src={
-              activity.assets?.large_image.startsWith('mp:external')
-                ? activity.assets?.large_image.replace(/mp:external\/([^\/]*)\/(http[s])/g, '$2:/')
-                : `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets?.large_image}.webp`
-            }
-            width="60"
-            height="60"
-            className="block object-cover rounded-lg"
-          />
-          {activity.assets?.small_image && (
+          {activity.assets.large_image && (
+            <img
+              src={
+                activity.assets?.large_image.startsWith('mp:external')
+                  ? activity.assets?.large_image.replace(/mp:external\/([^\/]*)\/(http[s])/g, '$2:/')
+                  : `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets?.large_image}.webp`
+              }
+              width="60"
+              height="60"
+              className="block object-cover rounded-lg"
+            />
+          )}
+          {activity.assets?.small_image && activity.assets.large_image && (
             <img
               src={`https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets?.small_image}.png`}
               width="20"
