@@ -1,4 +1,5 @@
 import { LanyardActivity } from '../../../types/lanyard';
+import GameIcon from '../icons/GameIcon';
 
 export default function GameActivity(activity: LanyardActivity) {
   return (
@@ -8,7 +9,7 @@ export default function GameActivity(activity: LanyardActivity) {
       {/* Image */}
       <div className="items-center flex">
         <div className="relative self-start">
-          {activity.assets.large_image && (
+          {activity.assets && activity.assets.large_image ? (
             <img
               src={
                 activity.assets?.large_image.startsWith('mp:external')
@@ -19,8 +20,10 @@ export default function GameActivity(activity: LanyardActivity) {
               height="60"
               className="block object-cover rounded-lg"
             />
+          ) : (
+            <GameIcon />
           )}
-          {activity.assets?.small_image && activity.assets.large_image && (
+          {activity.assets && activity.assets?.small_image && activity.assets.large_image && (
             <img
               src={`https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets?.small_image}.png`}
               width="20"
