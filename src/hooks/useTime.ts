@@ -56,7 +56,9 @@ function getTime(timestamps: Timestamps): Times | null {
   const endMiliseconds = endDate.getTime() - startDate.getTime();
   const endHours = Math.floor(endMiliseconds / HOUR);
   const endMinutes = Math.floor((endMiliseconds % HOUR) / MINUTE);
-  const endSeconds = Math.floor((endMiliseconds % MINUTE) / SECOND);
+  const endSeconds = Math.floor((endMiliseconds % MINUTE) / SECOND)
+    .toString()
+    .padStart(2, '0');
 
   const calc = Math.floor((miliseconds / endMiliseconds) * 10000) / 100;
 
