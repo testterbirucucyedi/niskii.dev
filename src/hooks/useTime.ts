@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Timestamps } from '../types/lanyard';
 
-const padding = (n: number) => (n < 10 ? `0${n}` : n);
+const padding = (n: string | number) => (n < 1 ? `${n}` : n);
 
 const DAY = 1000 * 60 * 60 * 24;
 const HOUR = 1000 * 60 * 60;
@@ -38,7 +38,9 @@ function getTime(timestamps: Timestamps): Times | null {
   const days = Math.floor(miliseconds / DAY);
   const hours = Math.floor((miliseconds % DAY) / HOUR);
   const minutes = Math.floor((miliseconds % HOUR) / MINUTE);
-  const seconds = Math.floor((miliseconds % MINUTE) / SECOND);
+  const seconds = Math.floor((miliseconds % MINUTE) / SECOND)
+    .toString()
+    .padStart(2, '0');
 
   if (!end) {
     if (days > 0) return { start: `${days > 1 ? `${days} days` : `${days} day`}`, end: null, completion: null };
