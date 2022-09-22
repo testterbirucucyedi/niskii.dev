@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Timestamps } from '../types/lanyard';
 
-const padding = (n: string | number) => (n < 1 ? `${n}` : n);
+const padding = (n: string | number) => (n < 10 ? `${n}` : n);
 
 const DAY = 1000 * 60 * 60 * 24;
 const HOUR = 1000 * 60 * 60;
