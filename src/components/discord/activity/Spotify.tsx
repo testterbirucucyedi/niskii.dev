@@ -1,6 +1,7 @@
 import { useTime } from '../../../hooks/useTime';
 import { LanyardSpotify } from '../../../types/lanyard';
 import Progress from '../../Progress';
+import SpotifyIcon from '../icons/SpotifyIcon';
 import SpotifyWhiteIcon from '../icons/SpotifyWhiteIcon';
 
 export default function SpotifyActivity(spotify: LanyardSpotify) {
@@ -8,7 +9,12 @@ export default function SpotifyActivity(spotify: LanyardSpotify) {
 
   return (
     <div className="mb-3">
-      <h2 className="font-bold text-xs text-slate-300 leading-4 mb-2 uppercase">Listening to Spotify</h2>
+      <div className="justify-between flex flex-row items-center">
+        <div className="text-center">
+          <h2 className="font-bold text-xs text-slate-300 leading-4 mb-2 uppercase">Listening to Spotify</h2>
+        </div>
+        <SpotifyIcon />
+      </div>
 
       {/* Image */}
       <div className="items-center flex">
@@ -19,12 +25,12 @@ export default function SpotifyActivity(spotify: LanyardSpotify) {
         <div className="flex-auto overflow-hidden ml-2.5">
           <a
             href={`https://open.spotify.com/track/${spotify.track_id}`}
-            className="font-semibold block whitespace-nowrap text-ellipsis overflow-hidden text-sm hover:underline underline-offset-2 text-slate-300"
+            className="block whitespace-nowrap text-ellipsis overflow-hidden text-sm font-semibold text-normal hover:underline underline-offset-2 text-slate-300"
           >
             {spotify.song}
           </a>
-          <div className="block whitespace-nowrap text-ellipsis overflow-hidden text-slate-300">by {spotify.artist.replaceAll('; ', ', ')}</div>
-          <div className="block whitespace-nowrap text-ellipsis overflow-hidden text-slate-300">on {spotify.album}</div>
+          <div className="block whitespace-nowrap text-ellipsis overflow-hidden text-normal text-slate-300">by {spotify.artist.replaceAll('; ', ', ')}</div>
+          <div className="block whitespace-nowrap text-ellipsis overflow-hidden text-normal text-slate-300">on {spotify.album}</div>
         </div>
       </div>
 
@@ -34,8 +40,8 @@ export default function SpotifyActivity(spotify: LanyardSpotify) {
           <div>
             <Progress time={time} />
             <div className="flex flex-row items-center gap-3 justify-between">
-              {time && time.start && <span className="text-xs">{time.start}</span>}
-              {time && time.end && <span className="text-xs">{time.end}</span>}
+              {time && time.start && <span className="text-xs text-normal">{time.start}</span>}
+              {time && time.end && <span className="text-xs text-normal">{time.end}</span>}
             </div>
           </div>
         )}
