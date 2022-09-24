@@ -17,9 +17,9 @@ export default function SpotifyActivity(spotify: LanyardSpotify) {
       </div>
 
       {/* Image */}
-      <div className="items-center flex">
+      <div className="items-center flex flex-auto">
         <div className="relative self-start">
-          <img src={spotify.album_art_url} alt={spotify.album} width="60" height="60" />
+          <img src={spotify.album_art_url} alt={spotify.album} width="60" height="60" className="relative" />
         </div>
 
         <div className="flex-auto overflow-hidden ml-2.5">
@@ -29,7 +29,7 @@ export default function SpotifyActivity(spotify: LanyardSpotify) {
           >
             {spotify.song}
           </a>
-          <div className="block whitespace-nowrap text-ellipsis overflow-hidden text-normal text-slate-300">by {spotify.artist.replaceAll('; ', ', ')}</div>
+          <div className="text-normal text-slate-300">by {spotify.artist.replaceAll('; ', ', ')}</div>
           <div className="block whitespace-nowrap text-ellipsis overflow-hidden text-normal text-slate-300">on {spotify.album}</div>
         </div>
       </div>

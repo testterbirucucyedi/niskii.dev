@@ -48,7 +48,7 @@ export default function GameActivity(activity: LanyardActivity) {
 
       {/* Buttons */}
       {activity.buttons && (
-        <div className="flex mt-3 flex-col flex-wrap justify-center items-stretch">
+        <div className="flex mt-3 flex-col flex-wrap space-y-2 justify-center items-stretch">
           {activity.buttons?.map(button => (
             <button className="h-8 text-sm w-full relative flex items-center justify-center text-white bg-zinc-600 hover:bg-zinc-500 rounded transition-colors">
               <div className="block whitespace-nowrap text-ellipsis overflow-hidden">{button.toString()}</div>
