@@ -5,7 +5,7 @@ import SpotifyIcon from '../icons/SpotifyIcon';
 import SpotifyWhiteIcon from '../icons/SpotifyWhiteIcon';
 
 export default function SpotifyActivity(spotify: LanyardSpotify) {
-  const time = useTime(spotify.timestamps);
+  const time = useTime(spotify.timestamps, true);
 
   return (
     <div className="mb-3">

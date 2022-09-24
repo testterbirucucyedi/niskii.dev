@@ -37,7 +37,7 @@ export default function Profile(props: CardProps) {
             <div className="w-full h-[1px] bg-zinc-800 mb-3" />
             <About />
             {game && GameActivity(game)}
-            {spotify && SpotifyActivity(spotify)}
+            {spotify && !game && SpotifyActivity(spotify)}
 
             <Connections />
           </div>

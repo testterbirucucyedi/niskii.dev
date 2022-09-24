@@ -1,7 +1,10 @@
+import { useTime } from '../../../hooks/useTime';
 import { LanyardActivity } from '../../../types/lanyard';
 import GameIcon from '../icons/GameIcon';
 
 export default function GameActivity(activity: LanyardActivity) {
+  const time = useTime(activity.timestamps, false);
+
   return (
     <div className="mb-3">
       <h2 className="font-bold text-xs text-slate-300 leading-4 mb-2 uppercase">Playing a game</h2>
@@ -40,9 +43,9 @@ export default function GameActivity(activity: LanyardActivity) {
           <div className="text-slate-300 block whitespace-nowrap text-ellipsis overflow-hidden">{activity.state}</div>
 
           {/* Progress */}
-          {/* {activity.timestamps && (
-            <div className="block whitespace-nowrap text-ellipsis overflow-hidden text-slate-300">{time?.start && !time.end ? `${time.start} elapsed` : `${time?.end} left`}</div>
-          )} */}
+          {activity.timestamps && (
+            <div className="block whitespace-nowrap text-ellipsis overflow-hidden text-slate-300">{time && time.start && !time.end ? `${time.start} elapsed` : `${time.end} left`}</div>
+          )}
         </div>
       </div>
 
