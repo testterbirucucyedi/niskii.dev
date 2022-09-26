@@ -4,9 +4,6 @@ import { useTime } from '../../../hooks/useTime';
 export default function GameActivity(activity: GatewayActivity) {
   const time = useTime(activity.timestamps, false);
 
-  const getAssetUrl = (appId: string, asset: string) =>
-    asset.startsWith('mp:external') ? `https://media.discordapp.net/${asset.replace('mp:', '')}` : `https://cdn.discordapp.com/${appId}/${asset}.png`;
-
   return (
     <div className="mb-3">
       <h2 className="font-bold text-xs text-slate-300 leading-4 mb-2 uppercase">Playing a game</h2>
@@ -15,15 +12,25 @@ export default function GameActivity(activity: GatewayActivity) {
       <div className="items-center flex">
         <div className="relative self-start">
           <img
-            src={activity.assets?.large_image ? getAssetUrl(activity.application_id, activity.assets.large_image) : `https://dcdn.dstn.to/app-icons/${activity.application_id}`}
+            src={
+              activity.assets.large_image
+                ? `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.large_image}.webp`
+                : `https://dcdn.dstn.to/app-icons/${activity.application_id}`
+            }
             width="60"
             height="60"
             className="block object-cover rounded-lg"
             alt={activity.assets.large_text}
           />
 
-          {activity.assets && activity.assets?.small_image && activity.assets.large_image && (
-            <img src={getAssetUrl(activity.application_id, activity.assets.small_image)} width="20" height="20" className="rounded-full absolute -bottom-1 -right-1" alt={activity.assets.small_text} />
+          {activity.assets.small_image && activity.assets.large_image && (
+            <img
+              src={`https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.small_image}.webp`}
+              width="20"
+              height="20"
+              className="rounded-full absolute -bottom-1 -right-1"
+              alt={activity.assets.small_text}
+            />
           )}
         </div>
 
