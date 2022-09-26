@@ -1,55 +1,17 @@
-export interface LanyardPresence {
-  spotify: LanyardSpotify;
+import type { GatewayActivity, GatewayActivityTimestamps } from 'discord-api-types/v10';
+
+export interface LanyardUser {
+  spotify: Spotify;
   listening_to_spotify: boolean;
+  kv: object;
   discord_user: DiscordUser;
-  discord_status: string;
-  activities: LanyardActivity[];
+  discord_status: Status;
+  activities: GatewayActivity[];
   active_on_discord_mobile: boolean;
   active_on_discord_desktop: boolean;
 }
 
-export interface LanyardActivity {
-  type: number;
-  state: string;
-  name: string;
-  id: string;
-  emoji?: Emoji;
-  created_at: number;
-  buttons?: Button[];
-  application_id: null | string;
-  timestamps?: Timestamps;
-  sync_id?: string;
-  session_id?: string;
-  party?: Party;
-  flags?: number;
-  details?: string;
-  assets?: Assets;
-}
-
-interface Button {
-  label: string;
-  url: string;
-}
-
-interface Assets {
-  large_text: string;
-  large_image: string;
-  small_text?: string;
-  small_image?: string;
-}
-
-interface Emoji {
-  name: string;
-}
-
-interface Party {
-  id: string;
-}
-
-export interface Timestamps {
-  start: number;
-  end?: number;
-}
+export type Status = 'online' | 'idle' | 'dnd' | 'offline';
 
 interface DiscordUser {
   username: string;
@@ -58,12 +20,43 @@ interface DiscordUser {
   discriminator: string;
   avatar: string;
 }
-
-export interface LanyardSpotify {
+export interface Spotify {
   track_id: string;
-  timestamps: Timestamps;
+  timestamps: GatewayActivityTimestamps;
   song: string;
   artist: string;
   album_art_url: string;
   album: string;
+}
+
+export enum LanyardOpcode {
+  Event,
+  Hello,
+  Initialize,
+  Heartbeat,
+}
+
+export type LanyardIncomingPayload = LanyardEventInitStatePayload | LanyardEventPresenceUpdatePayload | LanyardHelloPayload;
+
+interface LanyardEventInitStatePayload {
+  op: LanyardOpcode.Event;
+  seq: number;
+  t: 'INIT_STATE';
+  d: LanyardUser;
+}
+
+interface LanyardEventPresenceUpdatePayload {
+  op: LanyardOpcode.Event;
+  seq: number;
+  t: 'INIT_STATE';
+  d: LanyardUser;
+}
+
+interface LanyardHelloPayload {
+  op: LanyardOpcode.Hello;
+  d: { heartbeat_interval: number };
+}
+
+export interface WebSocketData extends Partial<LanyardUser> {
+  heartbeat_interval?: number;
 }

@@ -17,11 +17,6 @@ const nextConfig = {
         source: "/spotify",
         destination: "https://open.spotify.com/user/wu6vyqmi5jig37nh6nkp3wzhg",
         permanent: false
-      },
-      {
-        source: "/playlist",
-        destination: "https://open.spotify.com/playlist/2huBd3Ww3XupgkCRTRCB79",
-        permanent: false
       }
     ];
   }

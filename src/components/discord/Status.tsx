@@ -1,4 +1,4 @@
-import { LanyardPresence } from '../../types/lanyard';
+import { LanyardUser } from '../../types/lanyard';
 
 const statusClasses = {
   online: 'fill-green-600',
@@ -7,7 +7,7 @@ const statusClasses = {
   offline: 'fill-slate-500',
 };
 
-export default function Status(data: LanyardPresence) {
+export default function Status(data: LanyardUser) {
   if (!data) return <circle cx="68" cy="68" r="8" className={statusClasses[data.discord_status]} mask="url(#svg-mask-status-offline)" />;
 
   switch (data.discord_status) {
@@ -20,6 +20,4 @@ export default function Status(data: LanyardPresence) {
     case 'offline':
       return <circle cx="68" cy="68" r="8" className={statusClasses[data.discord_status]} mask="url(#svg-mask-status-offline)" />;
   }
-
-  return <circle cx="68" cy="68" r="8" className={statusClasses[data.discord_status]} mask="url(#svg-mask-status-offline)" />;
 }

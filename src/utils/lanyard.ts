@@ -1,42 +1,15 @@
-// By https://github.com/dustinrouillard/personal-site/blob/master/src/utils/lanyard.ts, thx
 import { EventEmitter } from 'events';
-import { LanyardPresence } from '../types/lanyard';
+import { LanyardIncomingPayload, LanyardOpcode } from '../types/lanyard';
 
-enum LanyardWebSocketOpcode {
-  Event,
-  Hello,
-  Initialize,
-  Heartbeat,
-}
-
-enum LanyardWebSocketEvent {
-  InitState = 'INIT_STATE',
-  PresenceUpdate = 'PRESENCE_UPDATE',
-}
-
-interface WebSocketData extends Partial<LanyardPresence> {
-  heartbeat_interval?: number;
-}
-
-interface SocketMessage {
-  op: LanyardWebSocketOpcode;
-  t?: LanyardWebSocketEvent;
-  d?: WebSocketData;
-}
-
-export interface Lanyard {
+export class Lanyard extends EventEmitter {
   ws: WebSocket;
   heartbeat: NodeJS.Timer;
   user_id: string;
 
-  on(event: 'presence', listener: (presence: LanyardPresence) => void): this;
-}
-
-export class Lanyard extends EventEmitter {
-  constructor(id: string) {
+  constructor(userId: string) {
     super();
 
-    this.user_id = id;
+    this.user_id = userId;
     this.ws = new WebSocket('wss://api.lanyard.rest/socket');
 
     this.ws.addEventListener('open', () => {
@@ -45,45 +18,31 @@ export class Lanyard extends EventEmitter {
       console.info('[WS] Successfully connected');
     });
 
-    this.ws.addEventListener('message', e => {
-      this.message(JSON.parse(e.data));
-    });
+    this.ws.addEventListener('message', event => {
+      const data = JSON.parse(event.data) as LanyardIncomingPayload;
 
-    this.ws.addEventListener('close', () => clearInterval(this.heartbeat));
-  }
-
-  private send(op: LanyardWebSocketOpcode, d?: any) {
-    if (this.ws.readyState !== this.ws.OPEN) return;
-    this.ws.send(JSON.stringify({ op, d }));
-  }
-
-  private subscribe(id: string) {
-    return this.send(LanyardWebSocketOpcode.Initialize, { subscribe_to_id: id });
-  }
-
-  private sendHeartbeat() {
-    return this.send(LanyardWebSocketOpcode.Heartbeat);
-  }
-
-  private message(data: SocketMessage) {
-    switch (data.op) {
-      case LanyardWebSocketOpcode.Hello:
-        this.heartbeat = setInterval(() => this.sendHeartbeat(), data.d!.heartbeat_interval);
-        this.subscribe(this.user_id);
-        break;
-
-      case LanyardWebSocketOpcode.Event:
-        switch (data.t) {
-          case LanyardWebSocketEvent.InitState:
-          case LanyardWebSocketEvent.PresenceUpdate:
-            this.emit('presence', data.d);
-            break;
+      switch (data.op) {
+        case LanyardOpcode.Hello: {
+          this.heartbeat = setInterval(() => this.ws.send(JSON.stringify({ op: LanyardOpcode.Heartbeat })), data.d.heartbeat_interval);
+          this.ws.send(JSON.stringify({ op: LanyardOpcode.Initialize, d: { subscribe_to_id: this.user_id } }));
+          break;
         }
 
-        break;
-      default:
-        console.info('[WS] Unknown message', data);
-    }
+        case LanyardOpcode.Event:
+          this.emit('presence', data.d);
+          break;
+
+        default:
+          console.info(`[WS] Unknown message: ${data}`);
+      }
+    });
+
+    this.ws.addEventListener('close', event => {
+      clearInterval(this.heartbeat);
+      this.emit('disconnected', event.code, event.reason);
+
+      console.error(`[WS] Closed with code ${event.code}.`);
+    });
   }
 }
 

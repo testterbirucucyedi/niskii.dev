@@ -1,5 +1,5 @@
+import type { GatewayActivityTimestamps } from 'discord-api-types/v10';
 import { useEffect, useState } from 'react';
-import { Timestamps } from '../types/lanyard';
 
 const padding = (n: string | number, removeZero: boolean) => (n < 10 ? `${removeZero === true ? `${n}` : `0${n}`}` : n);
 
@@ -25,7 +25,7 @@ type Times =
       completion: number;
     };
 
-function getTime(timestamps: Timestamps, removeZero: boolean): Times | null {
+function getTime(timestamps: GatewayActivityTimestamps, removeZero: boolean): Times | null {
   if (!timestamps) return null;
 
   const { start, end } = timestamps;
@@ -81,7 +81,7 @@ function getTime(timestamps: Timestamps, removeZero: boolean): Times | null {
   };
 }
 
-export function useTime(timestamps: Timestamps, removeZero = true) {
+export function useTime(timestamps: GatewayActivityTimestamps, removeZero = true) {
   const [time, setTime] = useState<Times | null>(getTime(timestamps, removeZero));
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import { LanyardPresence } from '../../types/lanyard';
+import { LanyardUser } from '../../types/lanyard';
 import About from './About';
 import GameActivity from './activity/Game';
 import SpotifyActivity from './activity/Spotify';
@@ -6,19 +6,22 @@ import Avatar from './Avatar';
 import Connections from './Connections';
 
 interface CardProps {
-  data: LanyardPresence;
+  data: LanyardUser;
 }
 
 export default function Profile(props: CardProps) {
   const game = props.data.activities.find(x => x.type === 0);
-  const { spotify } = props.data;
 
   return (
     <div className="w-[300px] text-slate-200 drop-shadow-xl font-['Whitney']">
       <div className="rounded-2xl overflow-hidden bg-zinc-900">
         <div className="relative">
           {/* Banner */}
-          <div className="w-full h-[120px] bg-center bg-[url('https://cdn.discordapp.com/banners/847865068657836033/4689888919bd63aa766d17d7eb2503ff.png?size=300')]" />
+          <picture>
+            <source type="image/webp" srcSet="/images/banner.webp" />
+            <source type="image/png" srcSet="/images/banner.png" />
+            <img src="/images/banner.webp" alt="banner" width="300" height="120" aria-hidden="true" draggable="false" className="block" />
+          </picture>
 
           {/* Avatar */}
           <div className="absolute top-[76px] left-[16px]">
@@ -37,7 +40,7 @@ export default function Profile(props: CardProps) {
             <div className="w-full h-[1px] bg-zinc-800 mb-3" />
             <About />
             {game && GameActivity(game)}
-            {spotify && !game && SpotifyActivity(spotify)}
+            {props.data.spotify && !game && SpotifyActivity(props.data.spotify)}
 
             <Connections />
           </div>

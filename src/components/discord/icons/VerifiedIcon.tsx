@@ -1,6 +1,6 @@
 export default function VerifiedIcon() {
   return (
-    <svg aria-label="Verified" aria-hidden="false" role="img" width="16" height="16" viewBox="0 0 16 15.2">
+    <svg aria-hidden="false" role="img" width="16" height="16" viewBox="0 0 16 15.2">
       <path
         fill="hsl(217, calc(var(--saturation-factor, 1) * 7.6%), 33.5%)"
         fillRule="evenodd"

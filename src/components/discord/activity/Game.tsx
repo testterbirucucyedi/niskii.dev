@@ -1,9 +1,11 @@
+import type { GatewayActivity } from 'discord-api-types/v10';
 import { useTime } from '../../../hooks/useTime';
-import { LanyardActivity } from '../../../types/lanyard';
-import GameIcon from '../icons/GameIcon';
 
-export default function GameActivity(activity: LanyardActivity) {
+export default function GameActivity(activity: GatewayActivity) {
   const time = useTime(activity.timestamps, false);
+
+  const getAssetUrl = (appId: string, asset: string) =>
+    asset.startsWith('mp:external') ? `https://media.discordapp.net/${asset.replace('mp:', '')}` : `https://cdn.discordapp.com/${appId}/${asset}.png`;
 
   return (
     <div className="mb-3">
@@ -12,27 +14,16 @@ export default function GameActivity(activity: LanyardActivity) {
       {/* Image */}
       <div className="items-center flex">
         <div className="relative self-start">
-          {activity.assets && activity.assets.large_image ? (
-            <img
-              src={
-                activity.assets?.large_image.startsWith('mp:external')
-                  ? activity.assets?.large_image.replace(/mp:external\/([^\/]*)\/(http[s])/g, '$2:/')
-                  : `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets?.large_image}.webp`
-              }
-              width="60"
-              height="60"
-              className="block object-cover rounded-lg"
-            />
-          ) : (
-            <GameIcon />
-          )}
+          <img
+            src={activity.assets?.large_image ? getAssetUrl(activity.application_id, activity.assets.large_image) : `https://dcdn.dstn.to/app-icons/${activity.application_id}`}
+            width="60"
+            height="60"
+            className="block object-cover rounded-lg"
+            alt={activity.assets.large_text}
+          />
+
           {activity.assets && activity.assets?.small_image && activity.assets.large_image && (
-            <img
-              src={`https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets?.small_image}.png`}
-              width="20"
-              height="20"
-              className="rounded-full absolute -bottom-1 -right-1"
-            />
+            <img src={getAssetUrl(activity.application_id, activity.assets.small_image)} width="20" height="20" className="rounded-full absolute -bottom-1 -right-1" alt={activity.assets.small_text} />
           )}
         </div>
 

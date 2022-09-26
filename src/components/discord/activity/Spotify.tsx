@@ -1,10 +1,10 @@
 import { useTime } from '../../../hooks/useTime';
-import { LanyardSpotify } from '../../../types/lanyard';
+import { Spotify } from '../../../types/lanyard';
 import Progress from '../../Progress';
 import SpotifyIcon from '../icons/SpotifyIcon';
 import SpotifyWhiteIcon from '../icons/SpotifyWhiteIcon';
 
-export default function SpotifyActivity(spotify: LanyardSpotify) {
+export default function SpotifyActivity(spotify: Spotify) {
   const time = useTime(spotify.timestamps, true);
 
   return (
@@ -22,15 +22,15 @@ export default function SpotifyActivity(spotify: LanyardSpotify) {
           <img src={spotify.album_art_url} alt={spotify.album} width="60" height="60" className="relative" />
         </div>
 
-        <div className="flex-auto overflow-hidden ml-2.5">
+        <div className="flex-auto overflow-hidden ml-2.5 text-normal">
           <a
             href={`https://open.spotify.com/track/${spotify.track_id}`}
-            className="block whitespace-nowrap text-ellipsis overflow-hidden text-sm font-semibold text-normal hover:underline underline-offset-2 text-slate-300"
+            className="block whitespace-nowrap text-ellipsis overflow-hidden text-sm font-semibold hover:underline underline-offset-2 text-slate-300"
           >
             {spotify.song}
           </a>
-          <div className="text-normal text-slate-300">by {spotify.artist.replaceAll('; ', ', ')}</div>
-          <div className="block whitespace-nowrap text-ellipsis overflow-hidden text-normal text-slate-300">on {spotify.album}</div>
+          <div className="text-slate-300">by {spotify.artist.replaceAll('; ', ', ')}</div>
+          <div className="block whitespace-nowrap text-ellipsis overflow-hidden text-slate-300">on {spotify.album}</div>
         </div>
       </div>
 
@@ -39,9 +39,9 @@ export default function SpotifyActivity(spotify: LanyardSpotify) {
         {spotify.timestamps && (
           <div>
             <Progress time={time} />
-            <div className="flex flex-row items-center gap-3 justify-between">
-              {time && time.start && <span className="text-xs text-normal">{time.start}</span>}
-              {time && time.end && <span className="text-xs text-normal">{time.end}</span>}
+            <div className="flex flex-row items-center gap-3 justify-between text-timestamp">
+              {time && time.start && <span className="text-xs font-medium">{time.start}</span>}
+              {time && time.end && <span className="text-xs font-medium">{time.end}</span>}
             </div>
           </div>
         )}

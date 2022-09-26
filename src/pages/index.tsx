@@ -2,13 +2,13 @@ import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import Profile from '../components/discord/Profile';
 import Loading from '../components/Loading';
-import { LanyardPresence } from '../types/lanyard';
+import { LanyardUser } from '../types/lanyard';
 import { lanyard } from '../utils/lanyard';
 
 export default function IndexRoute() {
-  const [status, setStatus] = useState<LanyardPresence>();
+  const [status, setStatus] = useState<LanyardUser>();
 
-  function presenceChange(data: LanyardPresence) {
+  function presenceChange(data: LanyardUser) {
     setStatus(data || null);
   }
 
