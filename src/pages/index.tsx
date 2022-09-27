@@ -5,11 +5,11 @@ import Loading from '../components/Loading';
 import { LanyardUser } from '../types/lanyard';
 import { lanyard } from '../utils/lanyard';
 
-export default function IndexRoute() {
+export default function Home() {
   const [status, setStatus] = useState<LanyardUser>();
 
   function presenceChange(data: LanyardUser) {
-    setStatus(data || null);
+    setStatus(data ?? null);
   }
 
   useEffect(() => {
@@ -28,8 +28,8 @@ export default function IndexRoute() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="shortcut icon" href="/favicon.png" />
         <title>Nicolas Ribeiro</title>
-        <meta name="description" content="My personal website." />
-        <meta content="https://cdn.discordapp.com/avatars/847865068657836033/47978c9be525f305379d17dcff2d86a2.png?size=512" property="og:image" />
+        <meta name="description" content="Nicolas Ribeiro's personal website and portfolio." />
+        <meta content="/images/avatar-512.png" property="og:image" />
       </Head>
 
       {status ? <Profile data={status} /> : <Loading />}

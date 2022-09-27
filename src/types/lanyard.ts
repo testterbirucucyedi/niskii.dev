@@ -1,25 +1,17 @@
-import type { GatewayActivity, GatewayActivityTimestamps } from 'discord-api-types/v10';
+import type { APIUser, GatewayActivity, GatewayActivityTimestamps, PresenceUpdateStatus } from 'discord-api-types/v10';
 
 export interface LanyardUser {
   spotify: Spotify;
   listening_to_spotify: boolean;
   kv: object;
-  discord_user: DiscordUser;
-  discord_status: Status;
+  discord_user: Partial<APIUser>;
+  discord_status: PresenceUpdateStatus;
   activities: GatewayActivity[];
+  active_on_discord_web: boolean;
   active_on_discord_mobile: boolean;
   active_on_discord_desktop: boolean;
 }
 
-export type Status = 'online' | 'idle' | 'dnd' | 'offline';
-
-interface DiscordUser {
-  username: string;
-  public_flags: number;
-  id: string;
-  discriminator: string;
-  avatar: string;
-}
 export interface Spotify {
   track_id: string;
   timestamps: GatewayActivityTimestamps;
@@ -55,8 +47,4 @@ interface LanyardEventPresenceUpdatePayload {
 interface LanyardHelloPayload {
   op: LanyardOpcode.Hello;
   d: { heartbeat_interval: number };
-}
-
-export interface WebSocketData extends Partial<LanyardUser> {
-  heartbeat_interval?: number;
 }
