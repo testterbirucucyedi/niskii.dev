@@ -19,18 +19,19 @@ export default function SpotifyActivity(spotify: Spotify) {
       {/* Image */}
       <div className="items-center flex flex-auto">
         <div className="relative self-start">
-          <img src={spotify.album_art_url} alt={spotify.album} width="60" height="60" className="relative" />
+          <img src={spotify.album_art_url} alt={spotify.album} width="60" height="60" className="block object-cover" />
         </div>
 
         <div className="flex-auto overflow-hidden ml-2.5 text-normal">
           <a
             href={`https://open.spotify.com/track/${spotify.track_id}`}
-            className="block whitespace-nowrap text-ellipsis overflow-hidden text-sm font-semibold hover:underline underline-offset-2 text-slate-300"
+            className="
+            block whitespace-nowrap text-ellipsis overflow-hidden text-sm font-semibold hover:underline underline-offset-2 text-slate-300"
           >
             {spotify.song}
           </a>
-          <div className="text-slate-300">by {spotify.artist.replaceAll('; ', ', ')}</div>
-          <div className="block whitespace-nowrap text-ellipsis overflow-hidden text-slate-300">on {spotify.album}</div>
+          <div className="text-slate-300 overflow-hidden block text-ellipsis whitespace-nowrap">by {spotify.artist.replaceAll('; ', ', ')}</div>
+          <div className="text-slate-300 block whitespace-nowrap text-ellipsis overflow-hidden">on {spotify.album}</div>
         </div>
       </div>
 
