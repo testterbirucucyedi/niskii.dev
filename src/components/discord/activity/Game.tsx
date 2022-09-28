@@ -19,7 +19,7 @@ export default function GameActivity(activity: GatewayActivity) {
             }
             width="60"
             height="60"
-            className="block object-cover rounded-lg"
+            className="large-mask block object-cover rounded-lg"
             alt={activity.assets.large_text}
           />
 
