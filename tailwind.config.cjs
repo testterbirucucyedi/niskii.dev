@@ -1,7 +1,6 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./src/**/*.tsx"
-  ],
+  content: ['./src/**/*.tsx', './index.html'],
   theme: {
     extend: {
       colors: {
@@ -11,9 +10,8 @@ module.exports = {
         offline: "#747f8d",
         link: 'hsl(197,calc(var(--saturation-factor, 1)*100%),47.8%)',
         normal: 'hsl(210,calc(var(--saturation-factor, 1)*2.9%),86.7%)',
-        timestamp: 'hsla(0,calc(var(--saturation-factor, 1)*0%),100%,.8)'
       }
     }
   },
-  plugins: []
-};
+  plugins: [],
+}

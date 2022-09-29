@@ -1,6 +1,6 @@
 import { useTime } from '../hooks/useTime';
 
-export default function Progress({ time }: { time: ReturnType<typeof useTime> }) {
+export function ProgressBar({ time }: { time: ReturnType<typeof useTime> }) {
   if (!time || !time.completion || !time.start) return null;
 
   return (

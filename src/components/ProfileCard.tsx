@@ -1,15 +1,15 @@
-import { LanyardUser } from '../../types/lanyard';
-import About from './About';
-import GameActivity from './activity/Game';
-import SpotifyActivity from './activity/Spotify';
-import Avatar from './Avatar';
-import Connections from './Connections';
+import { LanyardUser } from '../types/lanyard';
+import { AboutCard } from './AboutCard';
+import { GameCard } from './activity/GameCard';
+import { SpotifyCard } from './activity/SpotifyCard';
+import { Avatar } from './Avatar';
+import { ConnectionsCard } from './ConnectionsCard';
 
 interface CardProps {
   data: LanyardUser;
 }
 
-export default function Profile(props: CardProps) {
+export function ProfileCard(props: CardProps) {
   const game = props.data.activities.find(x => x.type === 0);
 
   return (
@@ -38,11 +38,11 @@ export default function Profile(props: CardProps) {
 
           <div className="px-4 pb-3.5 flex-initial text-sm">
             <div className="w-full h-[1px] bg-zinc-800 mb-3" />
-            <About />
-            {game && GameActivity(game)}
-            {props.data.spotify && !game && SpotifyActivity(props.data.spotify)}
+            <AboutCard />
+            {game && GameCard(game)}
+            {props.data.spotify && !game && SpotifyCard(props.data.spotify)}
 
-            <Connections />
+            <ConnectionsCard />
           </div>
         </div>
       </div>

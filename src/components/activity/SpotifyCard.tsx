@@ -1,10 +1,10 @@
-import { useTime } from '../../../hooks/useTime';
-import { Spotify } from '../../../types/lanyard';
-import Progress from '../../Progress';
-import SpotifyIcon from '../icons/SpotifyIcon';
-import SpotifyWhiteIcon from '../icons/SpotifyWhiteIcon';
+import { useTime } from '../../hooks/useTime';
+import { Spotify } from '../../types/lanyard';
+import { Spotify as SpotifyIcon } from '../icons/Spotify';
+import { SpotifyWhiteIcon } from '../icons/SpotifyWhiteIcon';
+import { ProgressBar } from '../ProgressBar';
 
-export default function SpotifyActivity(spotify: Spotify) {
+export function SpotifyCard(spotify: Spotify) {
   const time = useTime(spotify.timestamps, true);
 
   return (
@@ -39,8 +39,8 @@ export default function SpotifyActivity(spotify: Spotify) {
       <div className="mt-3">
         {spotify.timestamps && (
           <div>
-            <Progress time={time} />
-            <div className="flex flex-row items-center gap-3 justify-between text-timestamp">
+            <ProgressBar time={time} />
+            <div className="flex flex-row items-center gap-3 justify-between">
               {time && time.start && <span className="text-xs font-medium">{time.start}</span>}
               {time && time.end && <span className="text-xs font-medium">{time.end}</span>}
             </div>
