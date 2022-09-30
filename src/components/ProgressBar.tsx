@@ -1,6 +1,10 @@
 import { useTime } from '../hooks/useTime';
 
-export function ProgressBar({ time }: { time: ReturnType<typeof useTime> }) {
+interface CardProps {
+  time: ReturnType<typeof useTime>;
+}
+
+export function ProgressBar({ time }: CardProps) {
   if (!time || !time.completion || !time.start) return null;
 
   return (

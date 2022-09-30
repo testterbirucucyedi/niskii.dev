@@ -1,7 +1,11 @@
 import type { GatewayActivity } from 'discord-api-types/v10';
 import { useTime } from '../../hooks/useTime';
 
-export function GameCard(activity: GatewayActivity) {
+interface CardProps {
+  activity: GatewayActivity;
+}
+
+export function GameCard({ activity }: CardProps) {
   const time = useTime(activity.timestamps, false);
 
   return (

@@ -4,7 +4,11 @@ import { Spotify as SpotifyIcon } from '../icons/Spotify';
 import { SpotifyWhiteIcon } from '../icons/SpotifyWhiteIcon';
 import { ProgressBar } from '../ProgressBar';
 
-export function SpotifyCard(spotify: Spotify) {
+interface CardProps {
+  spotify: Spotify;
+}
+
+export function SpotifyCard({ spotify }: CardProps) {
   const time = useTime(spotify.timestamps, true);
 
   return (
@@ -41,8 +45,8 @@ export function SpotifyCard(spotify: Spotify) {
           <div>
             <ProgressBar time={time} />
             <div className="flex flex-row items-center gap-3 justify-between">
-              {time && time.start && <span className="text-xs font-medium">{time.start}</span>}
-              {time && time.end && <span className="text-xs font-medium">{time.end}</span>}
+              {time && time.start && <span className="text-xs font-normal">{time.start}</span>}
+              {time && time.end && <span className="text-xs font-normal">{time.end}</span>}
             </div>
           </div>
         )}

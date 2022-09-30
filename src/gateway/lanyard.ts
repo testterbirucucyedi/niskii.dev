@@ -41,7 +41,11 @@ export class Lanyard {
 
     this.ws.onclose = ({ code }) => {
       clearInterval(this.heartbeat);
-      console.info(`[WS] Connection closed with code ${code}`);
+      console.info(`[WS] Connection closed with code ${code}. Retrying in 1 second.`);
+
+      setTimeout(() => {
+        this.connect(setUser);
+      }, 1000);
     };
   }
 }

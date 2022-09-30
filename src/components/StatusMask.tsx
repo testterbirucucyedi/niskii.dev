@@ -8,20 +8,20 @@ const statusClasses = {
 };
 
 interface Props {
-  user: LanyardUser;
+  data: LanyardUser;
 }
 
-export function StatusMask(data: Props) {
-  if (!data && !data.user) return <circle cx="68" cy="68" r="8" className={statusClasses[data.user.discord_status]} mask="url(#svg-mask-status-offline)" />;
+export function StatusMask({ data }: Props) {
+  if (!data) return <circle cx="68" cy="68" r="8" className={statusClasses[data.discord_status]} mask="url(#svg-mask-status-offline)" />;
 
-  switch (data.user.discord_status) {
+  switch (data.discord_status) {
     case 'online':
-      return <circle cx="68" cy="68" r="8" className={statusClasses[data.user.discord_status]} />;
+      return <circle cx="68" cy="68" r="8" className={statusClasses[data.discord_status]} />;
     case 'idle':
-      return <circle cx="68" cy="68" r="8" className={statusClasses[data.user.discord_status]} mask="url(#svg-mask-status-idle)" />;
+      return <circle cx="68" cy="68" r="8" className={statusClasses[data.discord_status]} mask="url(#svg-mask-status-idle)" />;
     case 'dnd':
-      return <circle cx="68" cy="68" r="8" className={statusClasses[data.user.discord_status]} mask="url(#svg-mask-status-dnd)" />;
+      return <circle cx="68" cy="68" r="8" className={statusClasses[data.discord_status]} mask="url(#svg-mask-status-dnd)" />;
     case 'offline':
-      return <circle cx="68" cy="68" r="8" className={statusClasses[data.user.discord_status]} mask="url(#svg-mask-status-offline)" />;
+      return <circle cx="68" cy="68" r="8" className={statusClasses[data.discord_status]} mask="url(#svg-mask-status-offline)" />;
   }
 }
