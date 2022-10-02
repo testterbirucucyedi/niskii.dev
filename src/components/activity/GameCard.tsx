@@ -17,23 +17,21 @@ export function GameCard({ activity }: CardProps) {
         <div className="relative self-start">
           <img
             src={
-              activity.assets.large_image
+              activity.assets && activity.assets.large_image
                 ? `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.large_image}.webp`
                 : `https://dcdn.dstn.to/app-icons/${activity.application_id}`
             }
             width="60"
             height="60"
-            className={`${activity.assets.small_image ? 'large-mask' : ''} block object-cover rounded-lg`}
-            alt={activity.assets.large_text}
+            className={`${activity.assets && activity.assets.small_image ? 'large-mask' : ''} block object-cover rounded-lg`}
           />
 
-          {activity.assets.small_image && activity.assets.large_image && (
+          {activity.assets && activity.assets.small_image && activity.assets.large_image && (
             <img
               src={`https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.small_image}.webp`}
               width="20"
               height="20"
               className="rounded-full absolute -bottom-1 -right-1"
-              alt={activity.assets.small_text}
             />
           )}
         </div>

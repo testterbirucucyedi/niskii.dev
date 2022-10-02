@@ -53,6 +53,11 @@ export function ProfileCard({ data }: CardProps) {
             {/* About me */}
             <AboutCard />
 
+            {/* <div className="mb-3">
+              <h2 className="font-bold text-xs text-slate-300 leading-4 mb-2 uppercase">Discord Member Since</h2>
+              <span className="whitespace-pre-line text-normal">May 28, 2021</span>
+            </div> */}
+
             {/* Activities */}
             {game && <GameCard activity={game} />}
             {data.spotify && !game && <SpotifyCard spotify={data.spotify} />}
