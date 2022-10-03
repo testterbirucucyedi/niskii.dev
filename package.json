@@ -5,10 +5,10 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/whoisniskii/niskii.dev.git"
+    "url": "https://github.com/selim1337/niskii.dev.git"
   },
   "license": "MIT",
-  "author": "Nicolas Ribeiro <business@niskii.dev>",
+  "author": "selim1337 <selim1337dev@gmail.com>",
   "type": "module",
   "scripts": {
     "dev": "vite",
