@@ -14,7 +14,7 @@ export function ConnectionsCard() {
             />
           </svg>
 
-          <span className="text-md font-semibold text-normal text-white">whoisniskii</span>
+          <span className="text-md font-semibold text-normal text-white">selim1337</span>
 
           {/* Verified Icon */}
           <div className="w-[16px] h-[16px]">
@@ -30,7 +30,7 @@ export function ConnectionsCard() {
         </div>
 
         {/* Arrow Link */}
-        <a href="https://github.com/whoisniskii">
+        <a href="https://github.com/selim1337">
           <svg aria-hidden="true" role="img" width="24" height="24" className="rotate-45" viewBox="0 0 24 24">
             <polygon fill="currentColor" fillRule="nonzero" points="13 20 11 20 11 8 5.5 13.5 4.08 12.08 12 4.16 19.92 12.08 18.5 13.5 13 8" />
           </svg>
