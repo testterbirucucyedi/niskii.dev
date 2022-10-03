@@ -23,7 +23,7 @@ export function SpotifyCard({ spotify }: CardProps) {
       {/* Image */}
       <div className="items-center flex flex-auto">
         <div className="relative self-start">
-          <img src={spotify.album_art_url} alt={spotify.album} width="60" height="60" className="block object-cover" />
+          <img src={spotify.album_art_url} alt={spotify.album} width="60" height="60" className="block object-cover rounded-lg" />
         </div>
 
         <div className="flex-auto overflow-hidden ml-2.5 text-normal">
