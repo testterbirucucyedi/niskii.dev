@@ -50,4 +50,4 @@ export class Lanyard {
   }
 }
 
-export const lanyard = typeof window !== 'undefined' && new Lanyard('748799374628356126');
+export const lanyard = typeof window !== 'undefined' && new Lanyard('546303073962950657');
