@@ -26,7 +26,6 @@ export function GameCard({ activity }: CardProps) {
             height="60"
             className={`${activity.assets && activity.assets.small_image ? 'large-mask' : ''} block object-cover rounded-lg`}
           />
-
           {activity.assets && activity.assets.small_image && activity.assets.large_image && (
             <img
               src={`https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.small_image}.webp`}
