@@ -1,6 +1,6 @@
 import type { GatewayActivity } from 'discord-api-types/v10';
 import { useTime } from '../../hooks/useTime';
-import GameIcon from '../icons/GameIcon';
+
 
 interface CardProps {
   activity: GatewayActivity;
@@ -16,20 +16,17 @@ export function GameCard({ activity }: CardProps) {
       {/* Image */}
       <div className="items-center flex">
         <div className="relative self-start">
-        {activity.assets && activity.assets.large_image ? (
-            <img
-              src={
-                activity.assets?.large_image.startsWith('mp:external')
-                  ? activity.assets?.large_image.replace(/mp:external\/([^\/]*)\/(http[s])/g, '$2:/')
-                  : `https://dcdn.dstn.to/app-icons/${activity.application_id}`
-              }
-              width="60"
-              height="60"
-              className={`${activity.assets.small_image ? 'large-mask' : ''} block object-cover rounded-lg`}
-            />
-          ) : (
-            <GameIcon />
-          )}
+          <img
+            src={
+              activity.assets && activity.assets.large_image
+                ? `https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.large_image}.webp`
+                : `https://dcdn.dstn.to/app-icons/${activity.application_id}`
+            }
+            width="60"
+            height="60"
+            className={`${activity.assets && activity.assets.small_image ? 'large-mask' : ''} block object-cover rounded-lg`}
+          />
+
           {activity.assets && activity.assets.small_image && activity.assets.large_image && (
             <img
               src={`https://cdn.discordapp.com/app-assets/${activity.application_id}/${activity.assets.small_image}.webp`}
